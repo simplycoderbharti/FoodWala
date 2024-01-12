@@ -1,0 +1,53 @@
+form {
+  text-align: center;
+  margin-top:36px;
+}
+
+.col-lg-4 .form{
+  width:35%;
+}
+
+container{
+    display: flex;
+  
+   
+}
+
+.container.margin {
+    margin-top: 106px;
+    margin-left:-8px;
+}
+
+form h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: orangered;
+  margin-bottom: 20px;
+}
+
+form input {
+  width: 100%;
+  display: block;
+  padding: 1rem;
+  margin-bottom: 10px;
+  border: 2px solid #99ccff;
+}
+
+form label {
+  display: block;
+  color: red;
+  text-transform: capitalize;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.loginButton {
+  background-color: orangered;
+  color: aliceblue;
+  padding: 8px 20px;
+  border: none;
+  text-transform: uppercase;
+  margin-top: 20px;
+  width: 100%;
+}

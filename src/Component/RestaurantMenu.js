@@ -1,0 +1,64 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { CDN_URL, Menu_API } from './utills/constant';
+import { useDispatch } from 'react-redux';
+import { addItem } from './utills/cartSlice';
+import RestaurantCategory from './RestaurantCategory';
+import ShimmerMenu from './ShimmerMenu';
+
+const RestaurantMenu = () => {
+    const dispatch = useDispatch();
+    const [resinfo, setResinfo] = useState(null);
+    const [menu, setMenu] = useState([]);
+    const { resId } = useParams();
+
+    const fetchResMenu = async () => {
+        const MenuData = await fetch(Menu_API + resId);
+        const json = await MenuData.json();
+
+
+        const Rinfo = (json?.data?.cards[0]?.card?.card?.info || json?.data?.cards[2]?.card?.card?.info )
+     ;
+        setResinfo(Rinfo)
+
+
+        const NewMenu = (json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card || json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card)
+       setMenu(NewMenu);
+        // console.log(NewMenu)
+        
+    };
+    // console.log(menu)
+
+    useEffect(() => {
+        fetchResMenu();
+    }, []);
+
+    if (resinfo === null) return <ShimmerMenu />;
+
+    const handleAddItem = (item) => {
+        dispatch(addItem(item));
+    };
+
+    return (
+        <div className='text-center bg-white'>
+            <div className='flex justify-center flex-col md:flex-row p-3 mt-5 m-auto res-menu-top w-full md:w-6/12'>
+                <div className='text-start md:w-6/12'>
+                    <h1 className='font-bold text-2xl'>{resinfo.name}</h1>
+                    <h3 className='mt-1'>{resinfo.cuisines.join(',')}</h3>
+                </div>
+
+                <div className='flex flex-col justify-evenly border mt-3 p-3'>
+                    <h3 className='mb-2'>⭐ {resinfo.avgRating}</h3>
+                    <hr className='w-full text-gray-300 my-2' />
+                    <h3 className='mt-2'>{resinfo.costForTwoMessage}</h3>
+                </div>
+            </div>
+
+            <hr className='w-10/12 md:w-6/12 text-gray-300 m-auto mt-4' />
+
+            <RestaurantCategory menu={menu} />
+        </div>
+    );
+};
+
+export default RestaurantMenu;

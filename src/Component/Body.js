@@ -10,18 +10,20 @@ import Login from "./Login";
 import Crausel from "./Crausel";
 import Dish from "./Dish";
 import offline from '../images/offline.png'
+import {Main_API} from './utills/constant'
 
 
 function Body() {
     const [ListOfRestraurant, setListOfRestraurant] = useState([]);
     const [filteredRestraurant, setFilteredRestraurant] = useState([]);
     const [searchText, setSearchText] = useState("");
+    
 
 
 
     const fetchdata = async () => {
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.2138156&lng=75.8647527&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            Main_API
         );
 
         const json = await data.json();

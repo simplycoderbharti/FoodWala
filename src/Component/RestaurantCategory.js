@@ -5,13 +5,16 @@ import { useDispatch } from "react-redux";
 import { addItem } from "./utills/cartSlice";
 
 function RestaurantCategory({ menu }) {
+    console.log(menu)
     const dispatch = useDispatch();
+    
 
     return (
         <div className="mx-auto my-4 text-lg">
 
     
             {menu.itemCards ? (
+                
                 <>
                     {menu?.itemCards?.map((item) => (
                         <div key={item.card.info.id} className="res-category md:flex relative">

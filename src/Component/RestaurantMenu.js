@@ -16,18 +16,25 @@ const RestaurantMenu = () => {
         const MenuData = await fetch(Menu_API + resId);
         const json = await MenuData.json();
 
+        console.log(json)
+        
+
 
         const Rinfo = (json?.data?.cards[0]?.card?.card?.info || json?.data?.cards[2]?.card?.card?.info )
      ;
         setResinfo(Rinfo)
+        console.log(Rinfo)
+        
 
 
-        const NewMenu = (json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card || json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card)
+        const NewMenu = (json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card || json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card || json?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card)
        setMenu(NewMenu);
-        // console.log(NewMenu)
+        console.log(NewMenu)
+        // json?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card)
+    
         
     };
-    // console.log(menu)
+    console.log(menu)
 
     useEffect(() => {
         fetchResMenu();
@@ -56,7 +63,7 @@ const RestaurantMenu = () => {
 
             <hr className='w-10/12 md:w-6/12 text-gray-300 m-auto mt-4' />
 
-            <RestaurantCategory menu={menu} />
+            <RestaurantCategory menu={menu}  />
         </div>
     );
 };

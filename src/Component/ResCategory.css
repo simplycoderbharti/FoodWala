@@ -1,0 +1,75 @@
+.res-category{
+    border: 1px solid black;
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.name-price {
+    text-align: start;
+    margin: auto;
+}
+
+.add-btn {
+    left: 535px;
+}
+
+
+
+@media (max-width: 1024px){
+.add-btn {
+    left: 408px;
+}
+  
+}
+
+@media (max-width: 768px){
+.add-btn {
+    left: 306px;
+}
+img {
+    width:  100%;
+}
+
+  .bill-tab{
+        width:70%;
+    }
+  
+}
+
+@media (max-width: 425px){
+.res-category{ 
+    width: 100%;
+}
+
+.add-btn {
+    left: 1px;
+}
+img {
+    width: 50%;
+}
+.img-container{
+    display:flex;
+    justify-content: center;
+}
+
+.res-btn{
+    width:30%;
+}
+
+.bill-tab{
+        width:100%;
+    }
+}
+
+@media (max-width: 375px){
+    .bill-tab{
+        width:100%;
+    }
+}
+
+@media (max-width: 320px){
+    .bill-tab{
+        width:100%;
+    }
+}
